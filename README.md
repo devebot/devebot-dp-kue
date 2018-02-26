@@ -1,4 +1,4 @@
-# jobdapter
+# devebot-dp-kue
 
-A simple jobqueue adapter for Devebot.
+> Kue based jobqueue adapter for Devebot.
 

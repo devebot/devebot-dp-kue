@@ -1,36 +1,39 @@
 {
-  "name": "jobdapter",
-  "version": "0.0.2-alpha1",
-  "description": "Jobqueue Adapter for Devebot",
+  "name": "devebot-dp-kue",
+  "version": "0.2.0",
+  "description": "Devebot default plugin for Kue",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/*-test.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devebot/jobdapter.git"
+    "url": "git+https://github.com/devebot/devebot-dp-kue.git"
   },
   "keywords": [
     "devebot",
     "jobqueue"
   ],
   "author": {
-    "name": "Hung Pham",
-    "email": "pnhung177@acegik.net",
-    "url": "http://acegik.net/blog"
+    "name": "devebot",
+    "email": "contact@devebot.com",
+    "url": "https://github.com/devebot"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/devebot/jobdapter/issues"
+    "url": "https://github.com/devebot/devebot-dp-kue/issues"
   },
-  "homepage": "https://github.com/devebot/jobdapter#readme",
+  "homepage": "https://github.com/devebot/devebot-dp-kue#readme",
+  "peerDependencies": {
+    "devebot": "^0.2.5"
+  },
   "dependencies": {
-    "debug": "^2.2.0",
-    "kue": "^0.10.5"
+    "devebot": "^0.2.5",
+    "kue": "^0.11.6"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
-    "mocha": "^2.3.4",
-    "sinon": "^1.17.2"
+    "chai": "^4.1.2",
+    "devebot-api": "^0.2.1",
+    "mocha": "^3.5.3"
   }
 }

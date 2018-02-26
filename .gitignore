@@ -1,6 +1,7 @@
+.idea/
 node_modules/
 *.log
+*.log.*
 doc/
-.cache/
-.store/
-.idea/
+log/*.log
+log/*.log.*
