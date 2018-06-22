@@ -3,17 +3,31 @@
   "version": "0.2.0",
   "description": "Devebot default plugin for Kue",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "directories": {
+    "lib": "lib/"
   },
+  "files": [
+    "bin/",
+    "config/",
+    "data/",
+    "lib/"
+  ],
+  "scripts": {
+    "build": "babel ./src -d ./lib",
+    "clean": "rm -rf ./lib",
+    "prepublish": "NODE_ENV=production npm run build",
+    "pretest": "NODE_ENV=test npm run build",
+    "test": "mocha ./test/**/*-test.js",
+    "verify": "npm run prepublish && mocha ./test/**/*-test.js"
+  },
+  "keywords": [
+    "devebot",
+    "devebot-plugin"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devebot/devebot-dp-kue.git"
   },
-  "keywords": [
-    "devebot",
-    "jobqueue"
-  ],
   "author": {
     "name": "devebot",
     "email": "contact@devebot.com",
@@ -32,6 +46,9 @@
     "kue": "^0.11.6"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-minify-mangle-names": "^0.3.0",
+    "babel-preset-env": "^1.6.1",
     "mocha": "^4.1.0"
   }
 }

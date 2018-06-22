@@ -1,12 +1,11 @@
 'use strict';
 
-var events = require('events');
 var util = require('util');
 var lodash = Devebot.require('lodash');
 var chores = Devebot.require('chores');
-var JobqueueCommon = require('../keepouts/jobqueue-common.js');
+var JobqueueCommon = require('../keepouts/jobqueue-common');
 
-var JobqueueWorker = function(params) {
+function JobqueueWorker(params) {
   params = params || {};
   JobqueueCommon.call(this, params);
 
@@ -15,9 +14,7 @@ var JobqueueWorker = function(params) {
   var LX = params.loggingFactory.getLogger();
   var LT = params.loggingFactory.getTracer();
 
-  LX.has('conlog') && LX.log('conlog', LT.add({
-    sandboxName: sandboxName
-  }).toMessage({
+  LX.has('conlog') && LX.log('conlog', LT.add({ sandboxName }).toMessage({
     tags: [ 'constructor-begin' ],
     text: ' + constructor start in sandbox <{sandboxName}>'
   }));
@@ -38,9 +35,9 @@ var JobqueueWorker = function(params) {
       var reqTr = LT.branch({ key: 'requestId', value: runhook.requestId });
       LX.has('trace') && LX.log('trace', reqTr.add({
         runhookName: runhookName,
-        runhook: runhookInfo
+        runhookInfo: runhookInfo
       }).toMessage({
-        text: '{runhookName}#{requestId}: {runhook} - invoked'
+        text: '{runhookName}#{requestId}: {runhookInfo} - invoked'
       }));
       runhookManager.process(runhook, context).then(function(result) {
         LX.has('trace') && LX.log('trace', reqTr.add({
@@ -62,9 +59,9 @@ var JobqueueWorker = function(params) {
     } else {
       LX.has('trace') && LX.log('trace', reqTr.add({
         runhookName: runhookName,
-        runhook: runhookInfo
+        runhookInfo: runhookInfo
       }).toMessage({
-        text: '{runhookName}#{requestId}: {runhook} - not found'
+        text: '{runhookName}#{requestId}: {runhookInfo} - not found'
       }));
       done && done(null, {});
     }
