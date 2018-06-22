@@ -1,6 +1,6 @@
-examples/
-node_modules/
-test/
-.hit/
+examples
+node_modules
+test
+.hit
 .gitignore
 .npmignore

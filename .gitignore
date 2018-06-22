@@ -1,7 +1,5 @@
-.idea/
-node_modules/
+.idea
+node_modules
+/doc
 *.log
 *.log.*
-doc/
-log/*.log
-log/*.log.*
